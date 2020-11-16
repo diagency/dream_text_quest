@@ -1,12 +1,10 @@
 import telebot
-
+from config import API_TOKEN
 
 bot = telebot.TeleBot(API_TOKEN)
 controller = {}
 
 INVALID_CHOICE = "Введите, пожалуйста, другой вариант - одно число из списка вариантов выше."
-NAME = "DIOGEN"
-
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
