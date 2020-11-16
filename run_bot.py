@@ -19,10 +19,11 @@ def start_message(message):
                      [2] Кнопка "Вы на 20 лет старше"
                      [3] Кнопка "Полная противоположность вас"
                      [4] Кнопка "Известная личность"
-                     [5] Кнопка "Ваш преподаватель по проектному программированию"
+                     [5] Кнопка "Самый счастливый человек на Земле"
+                     [6] Кнопка "Ваш преподаватель по проектному программированию"
                      """)
-    user_id = message.from_user.id
-    controller[user_id] = 'start'
+    y = message.from_user.id
+    controller[y] = 'start'
 
 
 @bot.message_handler(content_types=['text'])
@@ -45,8 +46,10 @@ def start_handler(user_id, user_choice):
     if user_choice == "3":
         pass
     if user_choice == "4":
-        pass
+        pass    
     if user_choice == "5":
+        pass
+    if user_choice == "6":
         controller[user_id] = 'teacher'
         return """
             Вы открываете глаза. Звенит будильник. Перед вами ноутбук с Zoom. Что вы сделаете?
@@ -66,7 +69,8 @@ def teacher_handler(user_id, user_choice):
             [2] Кнопка "Вы на 20 лет старше"
             [3] Кнопка "Полная противоположность вас"
             [4] Кнопка "Известная личность"
-            [5] Кнопка "Ваш преподаватель по проектному программированию"
+            [5] Кнопка "Самый счастливый человек на Земле"
+            [6] Кнопка "Ваш преподаватель по проектному программированию"
             """
     if user_choice == "2":
         pass
