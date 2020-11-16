@@ -5,6 +5,7 @@ bot = telebot.TeleBot(API_TOKEN)
 controller = {}
 
 INVALID_CHOICE = "Введите, пожалуйста, другой вариант - одно число из списка вариантов выше."
+NAME = "DIOGEN"
 
 
 @bot.message_handler(commands=['start'])
@@ -21,8 +22,8 @@ def start_message(message):
                      [5] Кнопка "Самый счастливый человек на Земле"
                      [6] Кнопка "Ваш преподаватель по проектному программированию"
                      """)
-    y = message.from_user.id
-    controller[y] = 'start'
+    x = message.from_user.id
+    controller[x] = 'start'
 
 
 @bot.message_handler(content_types=['text'])
