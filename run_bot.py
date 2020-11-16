@@ -21,12 +21,13 @@ def start_message(message):
                      [5] Кнопка "Самый счастливый человек на Земле"
                      [6] Кнопка "Ваш преподаватель по проектному программированию"
                      """)
-    y = message.from_user.id
-    controller[y] = 'start'
+    user_id = message.from_user.id
+    controller[user_id] = 'start'
 
 
 @bot.message_handler(content_types=['text'])
 def start(message):
+    x = 7
     user_id = message.from_user.id
     user_choice = message.text
     user_state = controller.get(user_id, 'start') # Если вдруг такой user_id не сохранен, то считаем, что статус = start
