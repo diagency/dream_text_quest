@@ -5,6 +5,7 @@ bot = telebot.TeleBot(API_TOKEN)
 controller = {}
 
 INVALID_CHOICE = "Введите, пожалуйста, другой вариант - одно число из списка вариантов выше."
+NAME = "DIOGEN"
 
 
 @bot.message_handler(commands=['start'])
@@ -27,7 +28,6 @@ def start_message(message):
 
 @bot.message_handler(content_types=['text'])
 def start(message):
-    x = 7
     user_id = message.from_user.id
     user_choice = message.text
     user_state = controller.get(user_id, 'start') # Если вдруг такой user_id не сохранен, то считаем, что статус = start
