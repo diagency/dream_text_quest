@@ -6,6 +6,8 @@ controller = {}
 
 INVALID_CHOICE = "Введите, пожалуйста, другой вариант - одно число из списка вариантов выше."
 
+parts_pet = []
+
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.from_user.id,
@@ -33,12 +35,21 @@ def start(message):
         answer = start_handler(user_id, user_choice)
     if user_state == 'teacher':
         answer = teacher_handler(user_id, user_choice)
+    if user_state == 'head_pet':
+        answer = pet_handler_head(user_id, user_choice)
+    if user_state == 'body_pet':
+        answer = pet_handler_body(user_id, user_choice)
     bot.send_message(message.from_user.id, answer)
-
 
 def start_handler(user_id, user_choice):
     if user_choice == "1":
-        pass
+        controller[user_id] = 'head_pet'
+        return """
+            Вы открываете глаза. И слышите недовольное попискивание. Вы видите перед голову собой...
+            [1] Змейки
+            [2] Львёнка
+            [3] Орлёнка
+            """
     if user_choice == "2":
         pass
     if user_choice == "3":
@@ -74,5 +85,12 @@ def teacher_handler(user_id, user_choice):
         pass
     return INVALID_CHOICE
 
+def pet_handler_head(user_id, user_choice):
+    if user_choice == "1":
+        controller[user_id] = 'body_pet'
+    if user_choice == "2":
+        controller[user_id] = 'body_pet'
+    if user_choice == "3":
+        controller[user_id] = 'body_pet'
 
 bot.polling()
