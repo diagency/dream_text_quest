@@ -1,1 +1,1 @@
-API_TOKEN = 'YOUR_TOKEN_SHOULD_BE_HERE'  # TODO: Вставьте сюда API_TOKEN вашего бота
+API_TOKEN = '1242927602:AAGdNmVXkoVTbGa3qM6BRljvN5MHd9hRytU'  # TODO: Вставьте сюда API_TOKEN вашего бота
