@@ -39,6 +39,8 @@ def start(message):
         answer = pet_handler_head(user_id, user_choice)
     if user_state == 'body_pet':
         answer = pet_handler_body(user_id, user_choice)
+    if user_state == 'wings_pet':
+        answer = pet_handler_wings(user_id, user_choice)
     bot.send_message(message.from_user.id, answer)
 
 def start_handler(user_id, user_choice):
@@ -87,10 +89,47 @@ def teacher_handler(user_id, user_choice):
 
 def pet_handler_head(user_id, user_choice):
     if user_choice == "1":
-        controller[user_id] = 'body_pet'
+        parts_pet.append('змейки')
     if user_choice == "2":
-        controller[user_id] = 'body_pet'
+        parts_pet.append('львёнка')
     if user_choice == "3":
-        controller[user_id] = 'body_pet'
+        parts_pet.append('орлёнка')
+    controller[user_id] = 'body_pet'
+    return """
+               Имел он 4 лапки, но тело малыша было половинами двух тел...
+               [1] Дракона - Тигра
+               [2] Медведя - Киборга(?с кем вообще можо срестить тело медведя?)
+               [3] Волка - Орла
+               """
+def pet_handler_body(user_id, user_choice):
+    if user_choice == "1":
+        parts_pet.append('тигро - дракончика')
+    if user_choice == "2":
+        parts_pet.append('КИБЕР - медвежонка')
+    if user_choice == "3":
+        parts_pet.append('орлиного - волчёнка')
+    controller[user_id] = 'wings_pet'
 
+    return """
+               Резко от тела отделяются гигантские крылья, рассмотрев их вы понимаете что они похожи на...
+               [1] Крылья летучей мыши черного цвета с густой мягкой шерстью
+               [2] Крылья попугая с красно-желто-сине-зеленым оперением
+               [3] Огненные крылья
+               """
+def pet_handler_wings(user_id, user_choice):
+    if user_choice == "1":
+        parts_pet.append('крыльями летучей мыши')
+    if user_choice == "2":
+        parts_pet.append('крыльями попугая')
+    if user_choice == "3":
+        parts_pet.append('огненными крыльями')
+    HISTORY_PET = ('Зверенок с головой {}, телом {} и прекрасными {} обнюхав вас радостно завизжал и начал бегать вокруг вас.\n'
+                   '\n'
+                   'Пока вы смотрели на этот "вихрь", у вас закружилась голова, вы упали наземь потеряв сознание.\n'
+                   '\n'
+                   'Когда вы пришли в себя то увидели свою комнату...\n'
+                   '\n'
+                   'Спустя время вы заснули и опять увидели 6 кнопок...(/start если не знаете порядок)'.format(parts_pet[0], parts_pet[1], parts_pet[2]))
+    controller[user_id] = 'start'
+    return HISTORY_PET
 bot.polling()
